@@ -41,9 +41,9 @@ class qtype_coderunner_util {
             if ($uiplugin === 'ace') {
                 self::load_ace();
             }
-            if ($uiplugin === 'blockly') {
-                self::load_blockly();
-            }
+            //if ($uiplugin === 'blockly') {
+            //    self::load_blockly();
+            //}
             $PAGE->requires->js_call_amd('qtype_coderunner/userinterfacewrapper', 'newUiWrapper', $params);
         }
     }

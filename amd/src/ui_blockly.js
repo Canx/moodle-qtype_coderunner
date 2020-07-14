@@ -1,5 +1,4 @@
-define(['jquery'], function($) {
-
+define(['jquery', 'qtype_coderunner/node-blockly/browser'], function($, Blockly) {
 /* 1. A constructor SomeUiName(textareaId, width, height, params) that
  *    builds an HTML component of the given width and height. textareaId is the
  *    ID of the textArea from which the UI element should obtain its initial
@@ -31,7 +30,7 @@ define(['jquery'], function($) {
             this.toolbox += "</xml>";
 
             try {
-                this.blocklyWorkspace = window.blockly.inject(this.blocklyDiv, {toolbox: this.toolbox});
+                this.blocklyWorkspace = Blockly.inject(this.blocklyDiv, {toolbox: this.toolbox});
                 this.fail = false;
             }
             catch(err) {
