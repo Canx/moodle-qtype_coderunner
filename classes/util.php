@@ -41,10 +41,21 @@ class qtype_coderunner_util {
             if ($uiplugin === 'ace') {
                 self::load_ace();
             }
+            if ($uiplugin === 'blockly') {
+                self::load_blockly();
+            }
             $PAGE->requires->js_call_amd('qtype_coderunner/userinterfacewrapper', 'newUiWrapper', $params);
         }
     }
 
+    // Load blockly scripts.
+    public static function load_blockly() {
+        global $PAGE;
+        $plugindirrel = '/question/type/coderunner';
+        $PAGE->requires->js($plugindirrel . '/blockly/blockly_compressed.js');
+        $PAGE->requires->js($plugindirrel . '/blockly/blocks_compressed.js');
+        $PAGE->requires->js($plugindirrel . '/blockly/python_compressed.js');
+    }
 
     // Load the ace scripts.
     public static function load_ace() {
