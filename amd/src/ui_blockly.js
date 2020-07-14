@@ -37,9 +37,6 @@ define(['jquery'], function($) {
             catch(err) {
                 this.fail = true;
             }
-
-
-                        //Blockly.Xml.domToWorkspace("TODO: definir aquí XML de entorno!", blocklyWorkspace);
         }
 
 /* 2. A getElement() method that returns the HTML element that the
