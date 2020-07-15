@@ -1,4 +1,4 @@
-define(['jquery', 'qtype_coderunner/node-blockly/browser'], function($, Blockly) {
+define(['jquery', 'qtype_coderunner/browser'], function($, Blockly) {
 /* 1. A constructor SomeUiName(textareaId, width, height, params) that
  *    builds an HTML component of the given width and height. textareaId is the
  *    ID of the textArea from which the UI element should obtain its initial
