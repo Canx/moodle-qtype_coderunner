@@ -8,10 +8,11 @@ define(['jquery', 'qtype_coderunner/browser'], function($, Blockly) {
  *    additional data required, such as the 'lang' in the case of Ace.
  */
         function BlocklyUi(textareaId, width, height, templateParams) {
+            // BUG: textArea is empty!!
             this.textArea = $(document.getElementById(textareaId));
             this.templateParams = templateParams;
 
-            this.blocklyDiv = $(document.createElement("blockly"));
+            this.blocklyDiv = $(document.createElement("div"));
             this.blocklyDiv.attr({
                 id      : "blockly_" + textareaId,
                 class   : "coderunner_blockly",
@@ -19,6 +20,7 @@ define(['jquery', 'qtype_coderunner/browser'], function($, Blockly) {
                 "height": height,
                 "width" : width
             });
+
             this.toolbox = "<xml id='toolbox' style='display: none'>";
             this.toolbox += "<block type='controls_if'></block>";
             this.toolbox += "<block type='controls_repeat_ext'></block>";
@@ -29,12 +31,13 @@ define(['jquery', 'qtype_coderunner/browser'], function($, Blockly) {
             this.toolbox += "<block type='text_print'></block>";
             this.toolbox += "</xml>";
 
+            this.fail = false;
             try {
                 this.blocklyWorkspace = Blockly.inject(this.blocklyDiv, {toolbox: this.toolbox});
-                this.fail = false;
             }
             catch(err) {
                 this.fail = true;
+                console.log(err);
             }
         }
 
