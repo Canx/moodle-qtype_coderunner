@@ -8,18 +8,15 @@ define(['jquery', 'qtype_coderunner/browser'], function($, Blockly) {
  *    additional data required, such as the 'lang' in the case of Ace.
  */
         function BlocklyUi(textareaId, width, height, templateParams) {
-            // BUG: textArea is empty!!
-            this.textArea = $(document.getElementById(textareaId));
+            this.textArea = $("#" + textareaId);
             this.templateParams = templateParams;
 
-            this.blocklyDiv = $(document.createElement("div"));
-            this.blocklyDiv.attr({
-                id      : "blockly_" + textareaId,
-                class   : "coderunner_blockly",
-                tabindex: 1,
-                "height": height,
-                "width" : width
-            });
+            this.blocklyDiv = document.createElement("div");
+            this.blocklyDiv.id = "blockly_" + textareaId;
+            this.blocklyDiv.class = "coderunner_blockly";
+            this.blocklyDiv.tabindex = 1;
+            this.blocklyDiv.style.height = height;
+            this.blocklyDiv.style.width = width;
 
             this.toolbox = "<xml id='toolbox' style='display: none'>";
             this.toolbox += "<block type='controls_if'></block>";
@@ -31,20 +28,24 @@ define(['jquery', 'qtype_coderunner/browser'], function($, Blockly) {
             this.toolbox += "<block type='text_print'></block>";
             this.toolbox += "</xml>";
 
+            this.blocklyWorkspace = null;
             this.fail = false;
-            try {
-                this.blocklyWorkspace = Blockly.inject(this.blocklyDiv, {toolbox: this.toolbox});
-            }
-            catch(err) {
-                this.fail = true;
-                console.log(err);
-            }
         }
 
 /* 2. A getElement() method that returns the HTML element that the
  *    InterfaceWrapper is to insert into the document tree.
  */
         BlocklyUi.prototype.getElement = function() {
+            this.fail = false;
+            if (!this.blocklyWorkspace) {
+                try {
+                    this.blocklyWorkspace = Blockly.inject(this.blocklyDiv, {"toolbox": this.toolbox});
+                }
+                catch(err) {
+                    this.fail = true;
+                    console.log(err);
+                }
+            }
             return this.blocklyDiv;
         };
 
