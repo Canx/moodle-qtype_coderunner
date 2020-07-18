@@ -12,19 +12,18 @@ define(['jquery', 'qtype_coderunner/blockly/browser'], function($, Blockly) {
             this.textArea = document.getElementById(textareaId);
             this.templateParams = templateParams;
 
-            console.log("Altura: " + height);
-            console.log("Anchura: " + width);
-
-
             var xml;
             xml = "<xml id='toolbox' style='display: none'>";
+            xml += "<category name='Control'>";
             xml += "<block type='controls_if'></block>";
-            xml += "<block type='controls_repeat_ext'></block>";
+            xml += "<block type='controls_whileUntil'></block>";
+            xml += "<block type='controls_for'></block>";
+            xml += "</category>";
+            xml += "<category name='Logic'>";
             xml += "<block type='logic_compare'></block>";
-            xml += "<block type='math_number'></block>";
-            xml += "<block type='math_arithmetic'></block>";
-            xml += "<block type='text'></block>";
-            xml += "<block type='text_print'></block>";
+            xml += "<block type='logic_operation'></block>";
+            xml += "<block type='logic_boolean'></block>";
+            xml += "</category>";
             xml += "</xml>";
 
             this.toolbox = Blockly.Xml.textToDom(xml);
@@ -43,9 +42,9 @@ define(['jquery', 'qtype_coderunner/blockly/browser'], function($, Blockly) {
             this.fail = false;
             this.workspace = null;
             try {
-                this.workspace = Blockly.inject(this.blocklyDiv);
-                Blockly.Xml.domToWorkspace(this.toolbox, this.workspace);
-                this.textArea.parentNode.removeChild(this.blocklyDiv);
+                this.workspace = Blockly.inject(this.blocklyDiv, {
+                    toolbox: document.getElementById('toolbox')
+                    });
             }
             catch(err) {
                 this.fail = true;
@@ -97,8 +96,10 @@ define(['jquery', 'qtype_coderunner/blockly/browser'], function($, Blockly) {
  *    to the given dimensions.
  */
         //BlocklyUi.prototype.resize = function(w, h) {
-        BlocklyUi.prototype.resize = function() {
-            //Blockly.svgResize(this.workspace);
+        BlocklyUi.prototype.resize = function(width, height) {
+            this.blocklyDiv.style.height = height + "px";
+            this.blocklyDiv.style.width = width + "px";
+            Blockly.svgResize(this.workspace);
         };
 
 /* 8. A hasFocus() method that returns true if the UI element has focus.
