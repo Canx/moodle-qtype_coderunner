@@ -17,19 +17,14 @@ define(['jquery', 'qtype_coderunner/blockly/browser'], function($, Blockly) {
 
 
             var xml;
-            //xml = "<xml id='toolbox' style='display: none'>";
-            //xml += "<block type='controls_if'></block>";
-            //xml += "<block type='controls_repeat_ext'></block>";
-            //xml += "<block type='logic_compare'></block>";
-            //xml += "<block type='math_number'></block>";
-            //xml += "<block type='math_arithmetic'></block>";
-            //xml += "<block type='text'></block>";
-            //xml += "<block type='text_print'></block>";
-            //xml += "</xml>";
-
-            xml =  "<xml id=\"toolbox\" style=\"display: none\">";
-            xml += "<block type=\"controls_if\"></block>";
-            xml += "<block type=\"controls_whileUntil\"></block>";
+            xml = "<xml id='toolbox' style='display: none'>";
+            xml += "<block type='controls_if'></block>";
+            xml += "<block type='controls_repeat_ext'></block>";
+            xml += "<block type='logic_compare'></block>";
+            xml += "<block type='math_number'></block>";
+            xml += "<block type='math_arithmetic'></block>";
+            xml += "<block type='text'></block>";
+            xml += "<block type='text_print'></block>";
             xml += "</xml>";
 
             this.toolbox = Blockly.Xml.textToDom(xml);
@@ -40,9 +35,8 @@ define(['jquery', 'qtype_coderunner/blockly/browser'], function($, Blockly) {
             this.blocklyDiv.id = "blockly_" + textareaId;
             this.blocklyDiv.class = "coderunner_blockly";
             this.blocklyDiv.tabindex = 1;
-            this.blocklyDiv.style.height = height;
-            this.blocklyDiv.style.width = width;
-            this.blocklyDiv.overflow = "auto";
+            this.blocklyDiv.style.height = height + "px";
+            this.blocklyDiv.style.width = width + "px";
 
             this.textArea.parentNode.insertBefore(this.blocklyDiv, this.textArea);
 
