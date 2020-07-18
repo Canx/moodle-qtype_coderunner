@@ -42,6 +42,7 @@ define(['jquery', 'qtype_coderunner/blockly/browser'], function($, Blockly) {
             this.blocklyDiv.tabindex = 1;
             this.blocklyDiv.style.height = height;
             this.blocklyDiv.style.width = width;
+            this.blocklyDiv.overflow = "auto";
 
             this.textArea.parentNode.insertBefore(this.blocklyDiv, this.textArea);
 
