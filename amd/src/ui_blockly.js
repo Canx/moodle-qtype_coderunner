@@ -24,9 +24,15 @@ define(['jquery', 'qtype_coderunner/blockly/browser'], function($, Blockly) {
             xml += "<block type='logic_operation'></block>";
             xml += "<block type='logic_boolean'></block>";
             xml += "</category>";
+            xml += "<category name='Other'>";
+            xml += "<block type='math_number'></block>";
+            xml += "<block type='text'></block>";
+            xml += "<block type='text_print'></block>";
+            xml += "</category>";
             xml += "</xml>";
 
             this.toolbox = Blockly.Xml.textToDom(xml);
+            this.Code = Blockly.Python;
 
             this.textArea.parentNode.insertBefore(this.toolbox, this.textArea);
 
@@ -42,9 +48,18 @@ define(['jquery', 'qtype_coderunner/blockly/browser'], function($, Blockly) {
             this.fail = false;
             this.workspace = null;
             try {
+                // Create workspace with toolbox
                 this.workspace = Blockly.inject(this.blocklyDiv, {
                     toolbox: document.getElementById('toolbox')
                     });
+
+                // TODO: Load blockly state
+                // Problem. We need to load code and blockly state from textArea!!
+                // We need to extract from textArea the workspace state only!
+                if (this.textArea.value != "") {
+                    this.xmlCode = Blockly.Xml.textToDom(this.textArea.value);
+                    Blockly.Xml.domToWorkspace(this.xmlCode, this.workspace);
+                }
             }
             catch(err) {
                 this.fail = true;
@@ -81,7 +96,14 @@ define(['jquery', 'qtype_coderunner/blockly/browser'], function($, Blockly) {
  *    data to the related TextArea. This is used when submit is clicked.
  */
         BlocklyUi.prototype.sync = function() {
-            // TODO: generate code in textArea
+            // BUG: appears not to be called when clicking!!
+            // Generate and save code
+            //var code = this.Code.workspaceToCode(this.workspace);
+            //this.textArea.value = code;
+
+            // Generate and save blocky state
+            var workspaceState = Blockly.Xml.workspaceToDom(this.workspace);
+            this.textArea.value = (new XMLSerializer()).serializeToString(workspaceState);
         };
 
 /* 6. A destroy() method that should sync the contents to the text area then
