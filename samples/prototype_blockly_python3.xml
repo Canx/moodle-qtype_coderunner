@@ -1,0 +1,79 @@
+<div class="notifytiny debuggingmessage" data-rel="debugging">Invalid get_string() identifier: 'qtype_blockly' or component 'qtype_coderunner'. Perhaps you are missing $string['qtype_blockly'] = ''; in /var/www/moodle/question/type/coderunner/lang/en/qtype_coderunner.php?<ul style="text-align: left" data-rel="backtrace"><li>line 353 of /lib/classes/string_manager_standard.php: call to debugging()</li><li>line 7387 of /lib/moodlelib.php: call to core_string_manager_standard->get_string()</li><li>line 574 of /question/type/coderunner/questiontype.php: call to get_string()</li><li>line 521 of /question/type/coderunner/questiontype.php: call to qtype_coderunner::update_question_text_maybe()</li><li>line 852 of /question/type/coderunner/questiontype.php: call to qtype_coderunner::get_prototype()</li><li>line 842 of /question/format.php: call to qtype_coderunner->export_to_xml()</li><li>line 1499 of /question/format/xml/format.php: call to qformat_default->try_exporting_using_qtypes()</li><li>line 963 of /question/format.php: call to qformat_xml->writequestion()</li><li>line 76 of /question/exportone.php: call to qformat_default->exportprocess()</li></ul></div><?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+<!-- question: 22  -->
+  <question type="coderunner">
+    <name>
+      <text>BUILTIN_PROTOTYPE_blockly_python3_w_input</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Built-in prototypes are documented in the language strings.</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <coderunnertype>blockly</coderunnertype>
+    <prototypetype>1</prototypetype>
+    <allornothing>1</allornothing>
+    <penaltyregime>33.3, 66.7, ...</penaltyregime>
+    <precheck>0</precheck>
+    <showsource>0</showsource>
+    <answerboxlines>18</answerboxlines>
+    <answerboxcolumns>100</answerboxcolumns>
+    <answerpreload><![CDATA[<xml xmlns="https://developers.google.com/blockly/xml"><code xmlns=""/></xml>]]></answerpreload>
+    <globalextra></globalextra>
+    <useace>1</useace>
+    <resultcolumns></resultcolumns>
+    <template><![CDATA[import xml.etree.ElementTree as ET
+
+__saved_input__ = input
+def input(prompt=''):
+    s = __saved_input__(prompt)
+    print(s)
+    return s
+
+answer = """
+{{ STUDENT_ANSWER }}
+"""
+
+code = ET.fromstring(answer).find("code").text
+eval(code)
+
+SEPARATOR = "#<ab@17943918#@>#"
+
+{% for TEST in TESTCASES %}
+{{ TEST.testcode }}
+{% if not loop.last %}
+print(SEPARATOR)
+{% endif %}
+{% endfor %}]]></template>
+    <iscombinatortemplate>1</iscombinatortemplate>
+    <allowmultiplestdins>0</allowmultiplestdins>
+    <answer><![CDATA[<xml xmlns="https://developers.google.com/blockly/xml"><code xmlns=""/></xml>]]></answer>
+    <validateonsave>0</validateonsave>
+    <testsplitterre><![CDATA[|#<ab@17943918#@>#\n|ms]]></testsplitterre>
+    <language>python3</language>
+    <acelang></acelang>
+    <sandbox></sandbox>
+    <grader>EqualityGrader</grader>
+    <cputimelimitsecs></cputimelimitsecs>
+    <memlimitmb></memlimitmb>
+    <sandboxparams></sandboxparams>
+    <templateparams></templateparams>
+    <hoisttemplateparams>0</hoisttemplateparams>
+    <twigall>0</twigall>
+    <uiplugin>blockly</uiplugin>
+    <attachments>0</attachments>
+    <attachmentsrequired>0</attachmentsrequired>
+    <maxfilesize>0</maxfilesize>
+    <filenamesregex></filenamesregex>
+    <filenamesexplain></filenamesexplain>
+    <displayfeedback>0</displayfeedback>
+    <testcases>
+    </testcases>
+  </question>
+
+</quiz>
