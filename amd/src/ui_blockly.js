@@ -96,13 +96,13 @@ define(['jquery', 'qtype_coderunner/blockly/browser'], function($, Blockly) {
  *    data to the related TextArea. This is used when submit is clicked.
  */
         BlocklyUi.prototype.sync = function() {
-            // BUG: appears not to be called when clicking!!
-            // Generate and save code
-            //var code = this.Code.workspaceToCode(this.workspace);
-            //this.textArea.value = code;
-
             // Generate and save blocky state
             var workspaceState = Blockly.Xml.workspaceToDom(this.workspace);
+
+            // Append code node to workspaceState
+            var code = this.Code.workspaceToCode(this.workspace);
+            var xmlCode = Blockly.Xml.textToDom("<code>" + code + "</code>");
+            workspaceState.appendChild(xmlCode);
             this.textArea.value = (new XMLSerializer()).serializeToString(workspaceState);
         };
 
