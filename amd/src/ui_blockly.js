@@ -9,7 +9,7 @@ define(['jquery', 'qtype_coderunner/blockly/browser'], function($, Blockly) {
  */
         function BlocklyUi(textareaId, width, height, templateParams) {
 
-            var url, xhr, textArea;
+            var url, xhr, textArea, blocklyUi;
 
             textArea = document.getElementById(textareaId);
             this.textArea = textArea;
@@ -33,16 +33,17 @@ define(['jquery', 'qtype_coderunner/blockly/browser'], function($, Blockly) {
             xhr.overrideMimeType('text/xml');
 
             this.fail = false;
+            blocklyUi = this;
             xhr.onload = function() {
                 try {
                     if (xhr.readyState === xhr.DONE && xhr.status === 200) {
                         //this.toolbox = Blockly.Xml.textToDom(xhr.respondeXML);
-                        xhr.blocklyUi.workspace = Blockly.inject(xhr.blocklyUi.blocklyDiv, {toolbox: xhr.responseText});
+                        blocklyUi.workspace = Blockly.inject(blocklyUi.blocklyDiv, {toolbox: xhr.responseText});
                     }
                     // Load blockly state if exists
                     if (textArea.value != "") {
                         var xmlCode = Blockly.Xml.textToDom(textArea.value);
-                        Blockly.Xml.domToWorkspace(xmlCode, xhr.blocklyUi.workspace);
+                        Blockly.Xml.domToWorkspace(xmlCode, blocklyUi.workspace);
                     }
                 }
                 catch(err) {

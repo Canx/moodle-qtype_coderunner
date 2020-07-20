@@ -1212,7 +1212,7 @@ except subprocess.CalledProcessError as e:
     </testcases>
   </question>
 
-<!-- question: 22  -->
+<!-- question: 43  -->
   <question type="coderunner">
     <name>
       <text>BUILTIN_PROTOTYPE_blockly_python3_w_input</text>
@@ -1236,7 +1236,7 @@ except subprocess.CalledProcessError as e:
     <answerboxlines>18</answerboxlines>
     <answerboxcolumns>100</answerboxcolumns>
     <answerpreload><![CDATA[<xml xmlns="https://developers.google.com/blockly/xml"><code xmlns=""/></xml>]]></answerpreload>
-    <globalextra></globalextra>
+    <globalextra><![CDATA[{"toolbox": "Logic,Loop,Maths"}]]></globalextra>
     <useace>1</useace>
     <resultcolumns></resultcolumns>
     <template><![CDATA[import xml.etree.ElementTree as ET
@@ -1252,7 +1252,9 @@ answer = """
 """
 
 code = ET.fromstring(answer).find("code").text
-eval(code)
+
+if code:
+    eval(code)
 
 SEPARATOR = "#<ab@17943918#@>#"
 
@@ -1287,4 +1289,5 @@ print(SEPARATOR)
     <testcases>
     </testcases>
   </question>
+
 </quiz>

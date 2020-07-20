@@ -1,6 +1,6 @@
 <div class="notifytiny debuggingmessage" data-rel="debugging">Invalid get_string() identifier: 'qtype_blockly' or component 'qtype_coderunner'. Perhaps you are missing $string['qtype_blockly'] = ''; in /var/www/moodle/question/type/coderunner/lang/en/qtype_coderunner.php?<ul style="text-align: left" data-rel="backtrace"><li>line 353 of /lib/classes/string_manager_standard.php: call to debugging()</li><li>line 7387 of /lib/moodlelib.php: call to core_string_manager_standard->get_string()</li><li>line 574 of /question/type/coderunner/questiontype.php: call to get_string()</li><li>line 521 of /question/type/coderunner/questiontype.php: call to qtype_coderunner::update_question_text_maybe()</li><li>line 852 of /question/type/coderunner/questiontype.php: call to qtype_coderunner::get_prototype()</li><li>line 842 of /question/format.php: call to qtype_coderunner->export_to_xml()</li><li>line 1499 of /question/format/xml/format.php: call to qformat_default->try_exporting_using_qtypes()</li><li>line 963 of /question/format.php: call to qformat_xml->writequestion()</li><li>line 76 of /question/exportone.php: call to qformat_default->exportprocess()</li></ul></div><?xml version="1.0" encoding="UTF-8"?>
 <quiz>
-<!-- question: 22  -->
+<!-- question: 43  -->
   <question type="coderunner">
     <name>
       <text>BUILTIN_PROTOTYPE_blockly_python3_w_input</text>
@@ -24,7 +24,7 @@
     <answerboxlines>18</answerboxlines>
     <answerboxcolumns>100</answerboxcolumns>
     <answerpreload><![CDATA[<xml xmlns="https://developers.google.com/blockly/xml"><code xmlns=""/></xml>]]></answerpreload>
-    <globalextra></globalextra>
+    <globalextra><![CDATA[{"toolbox": "Logic,Loop,Maths"}]]></globalextra>
     <useace>1</useace>
     <resultcolumns></resultcolumns>
     <template><![CDATA[import xml.etree.ElementTree as ET
@@ -40,7 +40,9 @@ answer = """
 """
 
 code = ET.fromstring(answer).find("code").text
-eval(code)
+
+if code:
+    eval(code)
 
 SEPARATOR = "#<ab@17943918#@>#"
 
