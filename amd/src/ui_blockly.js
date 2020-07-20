@@ -9,32 +9,14 @@ define(['jquery', 'qtype_coderunner/blockly/browser'], function($, Blockly) {
  */
         function BlocklyUi(textareaId, width, height, templateParams) {
 
-            this.textArea = document.getElementById(textareaId);
+            var url, xhr, textArea;
+
+            textArea = document.getElementById(textareaId);
+            this.textArea = textArea;
             this.templateParams = templateParams;
+            this.workspace = null;
 
-            var xml;
-            xml = "<xml id='toolbox' style='display: none'>";
-            xml += "<category name='Control'>";
-            xml += "<block type='controls_if'></block>";
-            xml += "<block type='controls_whileUntil'></block>";
-            xml += "<block type='controls_for'></block>";
-            xml += "</category>";
-            xml += "<category name='Logic'>";
-            xml += "<block type='logic_compare'></block>";
-            xml += "<block type='logic_operation'></block>";
-            xml += "<block type='logic_boolean'></block>";
-            xml += "</category>";
-            xml += "<category name='Other'>";
-            xml += "<block type='math_number'></block>";
-            xml += "<block type='text'></block>";
-            xml += "<block type='text_print'></block>";
-            xml += "</category>";
-            xml += "</xml>";
-
-            this.toolbox = Blockly.Xml.textToDom(xml);
             this.Code = Blockly.Python;
-
-            this.textArea.parentNode.insertBefore(this.toolbox, this.textArea);
 
             this.blocklyDiv = document.createElement("div");
             this.blocklyDiv.id = "blockly_" + textareaId;
@@ -43,28 +25,36 @@ define(['jquery', 'qtype_coderunner/blockly/browser'], function($, Blockly) {
             this.blocklyDiv.style.height = height + "px";
             this.blocklyDiv.style.width = width + "px";
 
-            this.textArea.parentNode.insertBefore(this.blocklyDiv, this.textArea);
+            textArea.parentNode.insertBefore(this.blocklyDiv, textArea);
+
+            // Load toolbox XML from file
+            xhr = new XMLHttpRequest();
+            xhr.blocklyUi = this;
+            xhr.overrideMimeType('text/xml');
 
             this.fail = false;
-            this.workspace = null;
-            try {
-                // Create workspace with toolbox
-                this.workspace = Blockly.inject(this.blocklyDiv, {
-                    toolbox: document.getElementById('toolbox')
-                    });
-
-                // TODO: Load blockly state
-                // Problem. We need to load code and blockly state from textArea!!
-                // We need to extract from textArea the workspace state only!
-                if (this.textArea.value != "") {
-                    this.xmlCode = Blockly.Xml.textToDom(this.textArea.value);
-                    Blockly.Xml.domToWorkspace(this.xmlCode, this.workspace);
+            xhr.onload = function() {
+                try {
+                    if (xhr.readyState === xhr.DONE && xhr.status === 200) {
+                        //this.toolbox = Blockly.Xml.textToDom(xhr.respondeXML);
+                        xhr.blocklyUi.workspace = Blockly.inject(xhr.blocklyUi.blocklyDiv, {toolbox: xhr.responseText});
+                    }
+                    // Load blockly state if exists
+                    if (textArea.value != "") {
+                        var xmlCode = Blockly.Xml.textToDom(textArea.value);
+                        Blockly.Xml.domToWorkspace(xmlCode, xhr.blocklyUi.workspace);
+                    }
                 }
-            }
-            catch(err) {
-                this.fail = true;
-                console.log(err);
-            }
+                catch(err) {
+                    xhr.blocklyUi.fail = true;
+                    console.log(err);
+                }
+            };
+            url = window.location.protocol + '//' + window.location.host;
+            url += "/question/type/coderunner/amd/src/blockly/toolbox.xml";
+
+            xhr.open("GET", url, true);
+            xhr.send();
         }
 
 /* 2. A getElement() method that returns the HTML element that the
