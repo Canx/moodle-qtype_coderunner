@@ -104,6 +104,7 @@ define(['jquery', 'qtype_coderunner/blockly/browser'], function($, Blockly) {
         BlocklyUi.prototype.destroy = function() {
             this.workspace.dispose();
             this.blocklyDiv.parentNode.removeChild(this.blocklyDiv);
+            this.blocklyDiv = null;
         };
 
 /* 7. A resize(width, height) method that should resize the entire UI element
