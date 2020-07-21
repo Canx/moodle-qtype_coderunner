@@ -1,7 +1,7 @@
 /* eslint-disable */
 ;(function(root, factory) {
   if (typeof define === 'function' && define.amd) { // AMD
-    define(['./blockly'], factory);
+    define(['qtype_coderunner/blockly/blockly'], factory);
   } else if (typeof exports === 'object') { // Node.js
     module.exports = factory(require('./blockly'));
   } else { // Browser
