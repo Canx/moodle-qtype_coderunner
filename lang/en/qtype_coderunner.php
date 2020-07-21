@@ -444,6 +444,7 @@ $string['prototype_error'] = '*** PROTOTYPE LOAD FAILURE. DON\'T SAVE THIS! ***'
 $string['prototype_load_failure'] = 'Error loading prototype: ';
 $string['prototypeQ'] = 'Is prototype?';
 
+$string['qtype_blockly'] = '<p>A question type that integrates a Google Blockly library. Python code is generated in the browser.</p>';
 $string['qtype_c_function'] = '<p>A question type for C write-a-function questions.
 The student answer is expected to be a complete C function, but it can optionally
 be preceded by other self-contained C code such as preprocessor directives and
