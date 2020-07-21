@@ -102,7 +102,8 @@ define(['jquery', 'qtype_coderunner/blockly/browser'], function($, Blockly) {
  *    when CTRL-ALT-M is typed by the user to turn off all UI plugins
  */
         BlocklyUi.prototype.destroy = function() {
-            // TODO
+            this.workspace.dispose();
+            this.blocklyDiv.parentNode.removeChild(this.blocklyDiv);
         };
 
 /* 7. A resize(width, height) method that should resize the entire UI element
