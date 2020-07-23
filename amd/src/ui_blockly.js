@@ -1,4 +1,4 @@
-define(['jquery', 'qtype_coderunner/blockly/browser'], function($, Blockly) {
+define(['jquery', 'require', 'qtype_coderunner/blockly/browser'], function($, require, Blockly) {
 /* 1. A constructor SomeUiName(textareaId, width, height, params) that
  *    builds an HTML component of the given width and height. textareaId is the
  *    ID of the textArea from which the UI element should obtain its initial
@@ -9,14 +9,16 @@ define(['jquery', 'qtype_coderunner/blockly/browser'], function($, Blockly) {
  */
         function BlocklyUi(textareaId, width, height, templateParams) {
 
-            var url, xhr, textArea, blocklyUi;
+            var url, xhr, textArea, that;
 
+            var that = this;
             textArea = document.getElementById(textareaId);
             this.textArea = textArea;
             this.templateParams = templateParams;
             this.workspace = null;
 
-            this.Code = Blockly.Python;
+            // BUG: does not save state in locale!
+            this.setLocale(templateParams["locale"]);
 
             this.blocklyDiv = document.createElement("div");
             this.blocklyDiv.id = "blockly_" + textareaId;
@@ -29,25 +31,22 @@ define(['jquery', 'qtype_coderunner/blockly/browser'], function($, Blockly) {
 
             // Load toolbox XML from file
             xhr = new XMLHttpRequest();
-            xhr.blocklyUi = this;
             xhr.overrideMimeType('text/xml');
 
             this.fail = false;
-            blocklyUi = this;
             xhr.onload = function() {
                 try {
                     if (xhr.readyState === xhr.DONE && xhr.status === 200) {
-                        //this.toolbox = Blockly.Xml.textToDom(xhr.respondeXML);
-                        blocklyUi.workspace = Blockly.inject(blocklyUi.blocklyDiv, {toolbox: xhr.responseText});
+                        that.workspace = Blockly.inject(that.blocklyDiv, {toolbox: xhr.responseText});
                     }
                     // Load blockly state if exists
                     if (textArea.value != "") {
                         var xmlCode = Blockly.Xml.textToDom(textArea.value);
-                        Blockly.Xml.domToWorkspace(xmlCode, blocklyUi.workspace);
+                        Blockly.Xml.domToWorkspace(xmlCode, that.workspace);
                     }
                 }
                 catch(err) {
-                    xhr.blocklyUi.fail = true;
+                    that.fail = true;
                     console.log(err);
                 }
             };
@@ -91,7 +90,7 @@ define(['jquery', 'qtype_coderunner/blockly/browser'], function($, Blockly) {
             var workspaceState = Blockly.Xml.workspaceToDom(this.workspace);
 
             // Append code node to workspaceState
-            var code = this.Code.workspaceToCode(this.workspace);
+            var code = Blockly.Python.workspaceToCode(this.workspace);
             var xmlCode = Blockly.Xml.textToDom("<code>" + code + "</code>");
             workspaceState.appendChild(xmlCode);
             this.textArea.value = (new XMLSerializer()).serializeToString(workspaceState);
@@ -102,9 +101,13 @@ define(['jquery', 'qtype_coderunner/blockly/browser'], function($, Blockly) {
  *    when CTRL-ALT-M is typed by the user to turn off all UI plugins
  */
         BlocklyUi.prototype.destroy = function() {
-            this.workspace.dispose();
-            this.blocklyDiv.parentNode.removeChild(this.blocklyDiv);
-            this.blocklyDiv = null;
+            if (this.workspace) {
+                this.workspace.dispose();
+            }
+            if (this.blocklyDiv) {
+                this.blocklyDiv.parentNode.removeChild(this.blocklyDiv);
+                this.blocklyDiv = null;
+            }
         };
 
 /* 7. A resize(width, height) method that should resize the entire UI element
@@ -114,13 +117,25 @@ define(['jquery', 'qtype_coderunner/blockly/browser'], function($, Blockly) {
         BlocklyUi.prototype.resize = function(width, height) {
             this.blocklyDiv.style.height = height + "px";
             this.blocklyDiv.style.width = width + "px";
-            Blockly.svgResize(this.workspace);
+
+            if(this.workspace) {
+                Blockly.svgResize(this.workspace);
+            }
         };
 
 /* 8. A hasFocus() method that returns true if the UI element has focus.
  */
         BlocklyUi.prototype.hasFocus = function() {
+            // TODO
+        };
 
+        BlocklyUi.prototype.setLocale = function(lang) {
+            // TODO: check if lang exists in blockly!
+            if (lang) {
+                require(['./blockly/msg/' + lang], function(locale) {
+                    Blockly.setLocale(locale);
+                });
+            }
         };
 
 /* The return value from the module define is a record with a single field
