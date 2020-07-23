@@ -1236,7 +1236,7 @@ except subprocess.CalledProcessError as e:
     <answerboxlines>18</answerboxlines>
     <answerboxcolumns>100</answerboxcolumns>
     <answerpreload><![CDATA[<xml xmlns="https://developers.google.com/blockly/xml"><code xmlns=""/></xml>]]></answerpreload>
-    <globalextra><![CDATA[{"toolbox": "Logic,Loop,Maths"}]]></globalextra>
+    <globalextra></globalextra>
     <useace>1</useace>
     <resultcolumns></resultcolumns>
     <template><![CDATA[import xml.etree.ElementTree as ET
@@ -1254,7 +1254,7 @@ answer = """
 code = ET.fromstring(answer).find("code").text
 
 if code:
-    eval(code)
+    exec(code)
 
 SEPARATOR = "#<ab@17943918#@>#"
 
