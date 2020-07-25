@@ -17,7 +17,6 @@ define(['jquery', 'require', 'qtype_coderunner/blockly/browser'], function($, re
             this.templateParams = templateParams;
             this.workspace = null;
 
-            // BUG: does not save state in locale!
             this.setLocale(templateParams["locale"]);
 
             this.blocklyDiv = document.createElement("div");

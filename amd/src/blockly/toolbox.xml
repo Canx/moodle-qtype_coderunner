@@ -1,5 +1,5 @@
 <xml xmlns="https://developers.google.com/blockly/xml" id="toolbox" style="display: none">
-  <category name="Logic" colour="#5b80a5">
+  <category name="%{BKY_CATEGORY_NAME_LOGIC}" colour="#5b80a5">
     <block type="controls_if"></block>
     <block type="logic_compare">
       <field name="OP">EQ</field>
@@ -14,7 +14,7 @@
     <block type="logic_null"></block>
     <block type="logic_ternary"></block>
   </category>
-  <category name="Loops" colour="#5ba55b">
+  <category name="%{BKY_CATEGORY_NAME_LOOPS}" colour="#5ba55b">
     <block type="controls_repeat_ext">
       <value name="TIMES">
         <shadow type="math_number">
@@ -50,7 +50,7 @@
       <field name="FLOW">BREAK</field>
     </block>
   </category>
-  <category name="Math" colour="#5b67a5">
+  <category name="%{BKY_CATEGORY_NAME_MATH}" colour="#5b67a5">
     <block type="math_number">
       <field name="NUM">0</field>
     </block>
@@ -150,7 +150,7 @@
     </block>
     <block type="math_random_float"></block>
   </category>
-  <category name="Text" colour="#5ba58c">
+  <category name="%{BKY_CATEGORY_NAME_TEXT}" colour="#5ba58c">
     <block type="text">
       <field name="TEXT"></field>
     </block>
@@ -235,7 +235,7 @@
       </value>
     </block>
   </category>
-  <category name="Lists" colour="#745ba5">
+  <category name="%{BKY_CATEGORY_NAME_LISTS}" colour="#745ba5">
     <block type="lists_create_with">
       <mutation items="0"></mutation>
     </block>
@@ -304,6 +304,6 @@
     </block>
   </category>
   <sep></sep>
-  <category name="Variables" colour="#a55b80" custom="VARIABLE"></category>
-  <category name="Functions" colour="#995ba5" custom="PROCEDURE"></category>
+  <category name="%{BKY_CATEGORY_NAME_VARIABLES}" colour="#a55b80" custom="VARIABLE"></category>
+  <category name="%{BKY_CATEGORY_NAME_FUNCTIONS}" colour="#995ba5" custom="PROCEDURE"></category>
 </xml>
