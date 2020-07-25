@@ -36,7 +36,7 @@ def input(prompt=''):
     return s
 
 answer = """
-{{ STUDENT_ANSWER }}
+{{ STUDENT_ANSWER | e('py') }}
 """
 
 code = ET.fromstring(answer).find("code").text
