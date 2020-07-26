@@ -1,5 +1,13 @@
 /* eslint-disable */
-(function (Blockly){
+;(function(root, factory) {
+  if (typeof define === 'function' && define.amd) { // AMD
+    define(['./blockly'], factory);
+  } else if (typeof exports === 'object') { // Node.js
+    module.exports = factory(require('./blockly'));
+  } else { // Browser
+    root.Blockly = factory(root.Blockly);
+  }
+}(this, function(Blockly) {
 /**
  * @license
  * Copyright 2019 Google LLC
@@ -18,7 +26,7 @@
  */
 
 /**
- * @fileoverview Blockly core module for Node. It includes blockly-node.js
+ * @fileoverview Blockly core module for the browser. It includes blockly.js
  *               and adds a helper method for setting the locale.
  */
 
@@ -33,5 +41,5 @@ Blockly.setLocale = function (locale) {
   });
 };
 
-module.exports = Blockly;
-})(require('./blockly-node')); 
+return Blockly;
+})); 

@@ -1,7 +1,7 @@
 /* eslint-disable */
 ;(function(root, factory) {
   if (typeof define === 'function' && define.amd) { // AMD
-    define(['../core-browser'], factory);
+    define(['../core'], factory);
   } else if (typeof exports === 'object') { // Node.js
     module.exports = factory(require('../core'));
   } else { // Browser

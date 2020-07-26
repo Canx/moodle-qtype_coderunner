@@ -1,13 +1,13 @@
 /* eslint-disable */
 ;(function(root, factory) {
   if (typeof define === 'function' && define.amd) { // AMD
-    define(['./core-browser', './blocks', './python'], factory);
+    define(['./core-browser', './blocks', './msg/en', './python'], factory);
   } else if (typeof exports === 'object') { // Node.js
     module.exports = factory(require('./core-browser'), require('./blocks'), require('./javascript'));
   } else { // Browser
     root.Blockly = factory(root.Blockly, root.BlocklyBlocks, root.BlocklyJS);
   }
-}(this, function(Blockly, BlocklyBlocks, BlocklyJS) {
+}(this, function(Blockly, BlocklyBlocks, En, BlocklyJS) {
 /**
  * @license
  * Copyright 2019 Google LLC
@@ -35,7 +35,7 @@
 'use strict';
 
 // Include the EN Locale by default.
-//Blockly.setLocale(En);
+Blockly.setLocale(En);
 
 Blockly.Blocks = Blockly.Blocks || {};
 Object.keys(BlocklyBlocks).forEach(function (k) {

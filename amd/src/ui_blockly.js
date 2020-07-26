@@ -9,15 +9,12 @@ define(['jquery', 'require', 'qtype_coderunner/blockly/browser'], function($, re
  */
         function BlocklyUi(textareaId, width, height, templateParams) {
 
-            var url, xhr, textArea, that;
+            var url, xhr, textArea, lang, that;
 
             var that = this;
+            var lang = templateParams["locale"];
             textArea = document.getElementById(textareaId);
             this.textArea = textArea;
-            this.templateParams = templateParams;
-            this.workspace = null;
-
-            this.setLocale(templateParams["locale"]);
 
             this.blocklyDiv = document.createElement("div");
             this.blocklyDiv.id = "blockly_" + textareaId;
@@ -35,20 +32,26 @@ define(['jquery', 'require', 'qtype_coderunner/blockly/browser'], function($, re
             this.fail = false;
             xhr.onload = function() {
                 try {
-                    if (xhr.readyState === xhr.DONE && xhr.status === 200) {
-                        that.workspace = Blockly.inject(that.blocklyDiv, {toolbox: xhr.responseText});
-                    }
-                    // Load blockly state if exists
-                    if (textArea.value != "") {
-                        var xmlCode = Blockly.Xml.textToDom(textArea.value);
-                        Blockly.Xml.domToWorkspace(xmlCode, that.workspace);
-                    }
+                    // TODO: do not require if lang is 'en' (default language)
+                    require(['./blockly/msg/' + lang], function(msg) {
+                        if (xhr.readyState === xhr.DONE && xhr.status === 200) {
+                            Blockly.setLocale(msg);
+                            var xmlToolbox = Blockly.Xml.textToDom(xhr.responseText);
+                            that.workspace = Blockly.inject(that.blocklyDiv, {toolbox: xmlToolbox});
+                        }
+                        // Load blockly state if exists
+                        if (textArea.value != "") {
+                            var xmlCode = Blockly.Xml.textToDom(textArea.value);
+                            Blockly.Xml.domToWorkspace(xmlCode, that.workspace);
+                        }
+                    });
                 }
                 catch(err) {
                     that.fail = true;
                     console.log(err);
                 }
             };
+
             url = window.location.protocol + '//' + window.location.host;
             url += "/question/type/coderunner/amd/src/blockly/toolbox.xml";
 
@@ -126,15 +129,6 @@ define(['jquery', 'require', 'qtype_coderunner/blockly/browser'], function($, re
  */
         BlocklyUi.prototype.hasFocus = function() {
             // TODO
-        };
-
-        BlocklyUi.prototype.setLocale = function(lang) {
-            // TODO: check if lang exists in blockly!
-            if (lang) {
-                require(['./blockly/msg/' + lang], function(locale) {
-                    Blockly.setLocale(locale);
-                });
-            }
         };
 
 /* The return value from the module define is a record with a single field
