@@ -123,7 +123,6 @@ define(['jquery', 'require', 'qtype_coderunner/blockly/browser'], function($, re
 /* 7. A resize(width, height) method that should resize the entire UI element
  *    to the given dimensions.
  */
-        //BlocklyUi.prototype.resize = function(w, h) {
         BlocklyUi.prototype.resize = function(width, height) {
             this.blocklyDiv.style.height = height + "px";
             this.blocklyDiv.style.width = width + "px";
