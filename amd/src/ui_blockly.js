@@ -28,25 +28,14 @@ define(['jquery', 'require', 'qtype_coderunner/blockly/browser'], function($, re
             // Load toolbox XML from file
             xhr = new XMLHttpRequest();
             xhr.overrideMimeType('text/xml');
+            url = window.location.protocol + '//' + window.location.host;
+            url += "/question/type/coderunner/amd/src/blockly/toolbox.xml";
+            xhr.open("GET", url, true);
+            xhr.send();
 
-            this.fail = false;
-
-            var loadBlockly_ = function(msg) {
-               if (xhr.readyState === xhr.DONE && xhr.status === 200) {
-                    if (msg) {
-                        Blockly.setLocale(msg);
-                    }
-                    var xmlToolbox = Blockly.Xml.textToDom(xhr.responseText);
-                    that.workspace = Blockly.inject(that.blocklyDiv, {toolbox: xmlToolbox});
-                }
-                // Load blockly state if exists
-                if (textArea.value != "") {
-                    var xmlCode = Blockly.Xml.textToDom(textArea.value);
-                    Blockly.Xml.domToWorkspace(xmlCode, that.workspace);
-                }
-            };
-
+            // Load msg file and initialize blockly when toolbox is received
             xhr.onload = function() {
+                that.fail = false;
                 try {
                     if (lang) {
                         require(['./blockly/msg/' + lang], function(msg) {
@@ -62,11 +51,20 @@ define(['jquery', 'require', 'qtype_coderunner/blockly/browser'], function($, re
                 }
             };
 
-            url = window.location.protocol + '//' + window.location.host;
-            url += "/question/type/coderunner/amd/src/blockly/toolbox.xml";
-
-            xhr.open("GET", url, true);
-            xhr.send();
+            var loadBlockly_ = function(msg) {
+               if (xhr.readyState === xhr.DONE && xhr.status === 200) {
+                    if (msg) {
+                        Blockly.setLocale(msg);
+                    }
+                    var xmlToolbox = Blockly.Xml.textToDom(xhr.responseText);
+                    that.workspace = Blockly.inject(that.blocklyDiv, {toolbox: xmlToolbox});
+                }
+                // Load blockly state if exists
+                if (textArea.value != "") {
+                    var xmlCode = Blockly.Xml.textToDom(textArea.value);
+                    Blockly.Xml.domToWorkspace(xmlCode, that.workspace);
+                }
+            };
         }
 
 /* 2. A getElement() method that returns the HTML element that the
