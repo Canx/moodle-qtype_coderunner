@@ -32,7 +32,6 @@
 __saved_input__ = input
 def input(prompt=''):
     s = __saved_input__(prompt)
-    print(s)
     return s
 
 answer = """
