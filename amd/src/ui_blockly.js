@@ -30,21 +30,31 @@ define(['jquery', 'require', 'qtype_coderunner/blockly/browser'], function($, re
             xhr.overrideMimeType('text/xml');
 
             this.fail = false;
+
+            var loadBlockly_ = function(msg) {
+               if (xhr.readyState === xhr.DONE && xhr.status === 200) {
+                    if (msg) {
+                        Blockly.setLocale(msg);
+                    }
+                    var xmlToolbox = Blockly.Xml.textToDom(xhr.responseText);
+                    that.workspace = Blockly.inject(that.blocklyDiv, {toolbox: xmlToolbox});
+                }
+                // Load blockly state if exists
+                if (textArea.value != "") {
+                    var xmlCode = Blockly.Xml.textToDom(textArea.value);
+                    Blockly.Xml.domToWorkspace(xmlCode, that.workspace);
+                }
+            };
+
             xhr.onload = function() {
                 try {
-                    // TODO: do not require if lang is 'en' (default language)
-                    require(['./blockly/msg/' + lang], function(msg) {
-                        if (xhr.readyState === xhr.DONE && xhr.status === 200) {
-                            Blockly.setLocale(msg);
-                            var xmlToolbox = Blockly.Xml.textToDom(xhr.responseText);
-                            that.workspace = Blockly.inject(that.blocklyDiv, {toolbox: xmlToolbox});
-                        }
-                        // Load blockly state if exists
-                        if (textArea.value != "") {
-                            var xmlCode = Blockly.Xml.textToDom(textArea.value);
-                            Blockly.Xml.domToWorkspace(xmlCode, that.workspace);
-                        }
-                    });
+                    if (lang) {
+                        require(['./blockly/msg/' + lang], function(msg) {
+                            loadBlockly_(msg);
+                        });
+                    } else {
+                        loadBlockly_();
+                    }
                 }
                 catch(err) {
                     that.fail = true;
