@@ -9,10 +9,11 @@ define(['jquery', 'require', 'qtype_coderunner/blockly/browser'], function($, re
  */
         function BlocklyUi(textareaId, width, height, templateParams) {
 
-            var url, xhr, textArea, lang, that;
+            var url, xhr, textArea, locale, that;
 
             var that = this;
-            var lang = templateParams["locale"];
+            var locale = templateParams["locale"];
+
             textArea = document.getElementById(textareaId);
             this.textArea = textArea;
 
@@ -37,8 +38,8 @@ define(['jquery', 'require', 'qtype_coderunner/blockly/browser'], function($, re
             xhr.onload = function() {
                 that.fail = false;
                 try {
-                    if (lang) {
-                        require(['./blockly/msg/' + lang], function(msg) {
+                    if (locale) {
+                        require(['./blockly/msg/' + locale], function(msg) {
                             loadBlockly_(msg);
                         });
                     } else {
