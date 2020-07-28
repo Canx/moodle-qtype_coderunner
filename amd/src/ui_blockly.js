@@ -9,10 +9,11 @@ define(['jquery', 'require', 'qtype_coderunner/blockly/browser'], function($, re
  */
         function BlocklyUi(textareaId, width, height, templateParams) {
 
-            var url, xhr, textArea, locale, that;
+            var url, xhr, xmlToolbox, textArea, locale, that;
 
             var that = this;
             var locale = templateParams["locale"];
+            var toolbox = templateParams["toolbox"];
 
             textArea = document.getElementById(textareaId);
             this.textArea = textArea;
@@ -57,9 +58,17 @@ define(['jquery', 'require', 'qtype_coderunner/blockly/browser'], function($, re
                     if (msg) {
                         Blockly.setLocale(msg);
                     }
-                    var xmlToolbox = Blockly.Xml.textToDom(xhr.responseText);
+
+                    // Load toolbox from templateParams if exists, or default if not.
+                    if (toolbox) {
+                       xmlToolbox = Blockly.Xml.textToDom(toolbox);
+                    }
+                    else {
+                       xmlToolbox = Blockly.Xml.textToDom(xhr.responseText);
+                    }
                     that.workspace = Blockly.inject(that.blocklyDiv, {toolbox: xmlToolbox});
                 }
+
                 // Load blockly state if exists
                 if (textArea.value != "") {
                     var xmlCode = Blockly.Xml.textToDom(textArea.value);
