@@ -9,13 +9,13 @@ define(['jquery', 'require', 'qtype_coderunner/blockly/browser'], function($, re
  */
         function BlocklyUi(textareaId, width, height, templateParams) {
 
-            var url, xhr, xmlToolbox, textArea, locale, that;
+            var url, xhr, xmlToolbox, textArea, locale, toolbox, that;
 
-            var that = this;
-            var locale = templateParams["locale"];
-            var toolbox = templateParams["toolbox"];
-
+            that = this;
+            locale = templateParams["locale"];
+            toolbox = templateParams["toolbox"];
             textArea = document.getElementById(textareaId);
+
             this.textArea = textArea;
 
             this.blocklyDiv = document.createElement("div");
@@ -28,6 +28,7 @@ define(['jquery', 'require', 'qtype_coderunner/blockly/browser'], function($, re
             textArea.parentNode.insertBefore(this.blocklyDiv, textArea);
 
             // Load toolbox XML from file
+            // TODO: only load from file if not in templateParams
             xhr = new XMLHttpRequest();
             xhr.overrideMimeType('text/xml');
             url = window.location.protocol + '//' + window.location.host;
