@@ -9,7 +9,7 @@ define(['jquery', 'require', 'qtype_coderunner/blockly/browser'], function($, re
  */
         function BlocklyUi(textareaId, width, height, templateParams) {
 
-            var xmlToolbox, textArea, locale, toolbox, that;
+            var textArea, locale, toolbox, that;
 
             that = this;
             locale = templateParams["locale"];
@@ -49,8 +49,7 @@ define(['jquery', 'require', 'qtype_coderunner/blockly/browser'], function($, re
                    Blockly.setLocale(msg);
                }
 
-               xmlToolbox = Blockly.Xml.textToDom(toolbox);
-               that.workspace = Blockly.inject(that.blocklyDiv, {toolbox: xmlToolbox});
+               that.workspace = Blockly.inject(that.blocklyDiv, {"toolbox": toolbox});
 
                // Load blockly state if exists
                if (textArea.value != "") {
