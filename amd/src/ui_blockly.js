@@ -9,7 +9,7 @@ define(['jquery', 'require', 'qtype_coderunner/blockly/browser'], function($, re
  */
         function BlocklyUi(textareaId, width, height, templateParams) {
 
-            var url, xhr, xmlToolbox, textArea, locale, toolbox, that;
+            var xmlToolbox, textArea, locale, toolbox, that;
 
             that = this;
             locale = templateParams["locale"];
@@ -27,54 +27,36 @@ define(['jquery', 'require', 'qtype_coderunner/blockly/browser'], function($, re
 
             textArea.parentNode.insertBefore(this.blocklyDiv, textArea);
 
-            // Load toolbox XML from file
-            // TODO: only load from file if not in templateParams
-            xhr = new XMLHttpRequest();
-            xhr.overrideMimeType('text/xml');
-            url = window.location.protocol + '//' + window.location.host;
-            url += "/question/type/coderunner/amd/src/blockly/toolbox.xml";
-            xhr.open("GET", url, true);
-            xhr.send();
-
-            // Load msg file and initialize blockly when toolbox is received
-            xhr.onload = function() {
-                that.fail = false;
-                try {
-                    if (locale) {
-                        require(['./blockly/msg/' + locale], function(msg) {
-                            loadBlockly_(msg);
-                        });
-                    } else {
-                        loadBlockly_();
-                    }
+            // Load msg file and initialize blockly
+            that.fail = false;
+            try {
+                if (locale) {
+                    require(['./blockly/msg/' + locale], function(msg) {
+                        loadBlockly_(msg);
+                    });
+                } else {
+                    loadBlockly_();
                 }
-                catch(err) {
-                    that.fail = true;
-                    console.log(err);
-                }
-            };
+            }
+            catch(err) {
+                that.fail = true;
+                console.log(err);
+            }
 
             var loadBlockly_ = function(msg) {
-               if (xhr.readyState === xhr.DONE && xhr.status === 200) {
-                    if (msg) {
-                        Blockly.setLocale(msg);
-                    }
+               // Do not load locale if not configured or is english (already loaded)
+               if (msg && locale != "en") {
+                   Blockly.setLocale(msg);
+               }
 
-                    // Load toolbox from templateParams if exists, or default if not.
-                    if (toolbox) {
-                       xmlToolbox = Blockly.Xml.textToDom(toolbox);
-                    }
-                    else {
-                       xmlToolbox = Blockly.Xml.textToDom(xhr.responseText);
-                    }
-                    that.workspace = Blockly.inject(that.blocklyDiv, {toolbox: xmlToolbox});
-                }
+               xmlToolbox = Blockly.Xml.textToDom(toolbox);
+               that.workspace = Blockly.inject(that.blocklyDiv, {toolbox: xmlToolbox});
 
-                // Load blockly state if exists
-                if (textArea.value != "") {
-                    var xmlCode = Blockly.Xml.textToDom(textArea.value);
-                    Blockly.Xml.domToWorkspace(xmlCode, that.workspace);
-                }
+               // Load blockly state if exists
+               if (textArea.value != "") {
+                   var xmlCode = Blockly.Xml.textToDom(textArea.value);
+                   Blockly.Xml.domToWorkspace(xmlCode, that.workspace);
+               }
             };
         }
 
