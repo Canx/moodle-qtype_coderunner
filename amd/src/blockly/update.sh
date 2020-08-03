@@ -3,9 +3,6 @@
 CURR="$PWD"
 TMP_DIR="$CURR/tmp/node_modules/blockly"
 
-# delete current package.json
-rm $CURR/package.json
-
 # install blockly throught npm in temp dir
 mkdir -p ./tmp
 cd ./tmp
@@ -20,17 +17,15 @@ cp package.json index.js blockly.js blockly_compressed.js blocks.js blocks_compr
 sed -i "s/core'/core-browser'/g" $CURR/python.js
 
 # we need to merge extra strings that do not appear in blockly
-cd $TMP_DIR/msg
-cp ./en.js ./es.js ./fr.js $CURR/msg/
-sed -i "$(($(wc -l < $CURR/msg/en.js)-1)),\$d" $CURR/msg/en.js
-sed -i "$(($(wc -l < $CURR/msg/es.js)-1)),\$d" $CURR/msg/es.js
-sed -i "$(($(wc -l < $CURR/msg/fr.js)-1)),\$d" $CURR/msg/fr.js
-cat $CURR/msg/en.more >> $CURR/msg/en.js
-cat $CURR/msg/es.more >> $CURR/msg/es.js
-cat $CURR/msg/fr.more >> $CURR/msg/fr.js
-sed -i "s/core'/core-browser'/g" $CURR/msg/en.js
-sed -i "s/core'/core-browser'/g" $CURR/msg/es.js
-sed -i "s/core'/core-browser'/g" $CURR/msg/fr.js
+cd $CURR/msg
+langs=`ls *.more | cut -f 1 -d '.'`
+for lang in $langs
+do
+    cp $TMP_DIR/msg/$lang.js $CURR/msg/
+    sed -i "$(($(wc -l < $CURR/msg/$lang.js)-1)),\$d" $CURR/msg/$lang.js
+    cat $CURR/msg/$lang.more >> $CURR/msg/$lang.js
+    sed -i "s/core'/core-browser'/g" $CURR/msg/$lang.js
+done
 
 # copy media dir
 mkdir -p $CURR/media
