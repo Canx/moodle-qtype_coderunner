@@ -1,0 +1,9 @@
+Blockly.Msg["CATEGORY_NAME_LOGIC"] = "Logique";
+Blockly.Msg["CATEGORY_NAME_LOOPS"] = "Boucles";
+Blockly.Msg["CATEGORY_NAME_MATH"] = "Math";
+Blockly.Msg["CATEGORY_NAME_TEXT"] = "Texte";
+Blockly.Msg["CATEGORY_NAME_LISTS"] = "Listes";
+Blockly.Msg["CATEGORY_NAME_VARIABLES"] = "Variables";
+Blockly.Msg["CATEGORY_NAME_FUNCTIONS"] = "Fonctions";
+return Blockly.Msg;
+})); 

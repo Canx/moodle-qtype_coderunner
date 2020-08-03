@@ -1,9 +1,9 @@
 /* eslint-disable */
 ;(function(root, factory) {
   if (typeof define === 'function' && define.amd) { // AMD
-    define(['../core'], factory);
+    define(['../core-browser'], factory);
   } else if (typeof exports === 'object') { // Node.js
-    module.exports = factory(require('../core'));
+    module.exports = factory(require('../core-browser'));
   } else { // Browser
     root.Blockly.Msg = factory(root.Blockly);
   }
@@ -443,6 +443,7 @@ Blockly.Msg["TEXTS_HUE"] = "160";
 Blockly.Msg["PROCEDURES_HUE"] = "290";
 Blockly.Msg["COLOUR_HUE"] = "20";
 Blockly.Msg["VARIABLES_DYNAMIC_HUE"] = "310";
+Blockly.Msg["VARIABLES_DYNAMIC_HUE"] = "310";
 Blockly.Msg["CATEGORY_NAME_LOGIC"] = "Logic";
 Blockly.Msg["CATEGORY_NAME_LOOPS"] = "Loops";
 Blockly.Msg["CATEGORY_NAME_MATH"] = "Math";
@@ -451,4 +452,4 @@ Blockly.Msg["CATEGORY_NAME_LISTS"] = "Lists";
 Blockly.Msg["CATEGORY_NAME_VARIABLES"] = "Variables";
 Blockly.Msg["CATEGORY_NAME_FUNCTIONS"] = "Functions";
 return Blockly.Msg;
-})); 
+}));

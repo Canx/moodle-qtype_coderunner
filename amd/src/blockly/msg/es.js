@@ -1,9 +1,9 @@
 /* eslint-disable */
 ;(function(root, factory) {
   if (typeof define === 'function' && define.amd) { // AMD
-    define(['../core'], factory);
+    define(['../core-browser'], factory);
   } else if (typeof exports === 'object') { // Node.js
-    module.exports = factory(require('../core'));
+    module.exports = factory(require('../core-browser'));
   } else { // Browser
     root.Blockly.Msg = factory(root.Blockly);
   }
