@@ -12,11 +12,11 @@ cd $TMP_DIR
 # Copy core blockly files
 cp package.json index.js blockly.js blockly_compressed.js blocks.js blocks_compressed.js browser.js core-browser.js python.js python_compressed.js $CURR
 
-# copy core-browser to core to avoid changing references in other files
-#cp $CURR/core-browser.js $CURR/core.js
+# Change reference from core to core-browser in define
 sed -i "s/core'/core-browser'/g" $CURR/python.js
 
-# we need to merge extra strings that do not appear in blockly
+# we need to merge extra strings that still don't appear in blockly
+# Blockly issue ->  https://github.com/google/blockly/issues/4069
 cd $CURR/msg
 langs=`ls *.more | cut -f 1 -d '.'`
 for lang in $langs
@@ -31,7 +31,7 @@ done
 mkdir -p $CURR/media
 cp $TMP_DIR/media/* $CURR/media/
 
-# replace ./javascript for ./python in browser.js
+# replace reference ./javascript for ./python in browser.js
 sed -i 's/javascript/python/g' $CURR/browser.js
 
 # remove .js extension in define()
