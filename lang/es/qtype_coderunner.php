@@ -143,9 +143,9 @@ $string['errorstring-submitfailed'] = 'Falló el envío al sandbox';
 $string['errorstring-unknown'] = 'Error inesperado al ejecutar su código. El servidor de sandbox puede estar caído o sobrecargado. ¿Quizás intentarlo de nuevo en breve? ';
 $string['expand'] = 'Expandir';
 $string['expandtitle'] = 'Mostrar categorías de preguntas';
-$string['pected '] =' Salida esperada ';
-$string['pectedcolhdr '] =' Esperado ';
-$string['pected_help '] =' El resultado esperado de la prueba. Visto por la plantilla como {{TEST.expected}}. ';
+$string['expected'] ='Salida esperada';
+$string['expectedcolhdr'] ='Esperado';
+$string['expected_help'] ='El resultado esperado de la prueba. Visto por la plantilla como {{TEST.expected}}.';
 $string['exportthisquestion'] = 'Exportar esta pregunta';
 $string['exportthisquestion_help'] = 'Esto creará un archivo de exportación XML de Moodle que contiene solo esta pregunta. Un ejemplo de cuándo esto es útil si cree que esta pregunta demuestra un error en CodeRunner que le gustaría informar a los desarrolladores. ';
 $string['extra'] = 'Datos de plantilla adicionales';
@@ -183,7 +183,7 @@ $string['graphhelp'] = '- Haga doble clic en un espacio en blanco para crear un 
 - Haga clic en un enlace / nodo y luego presione la tecla Eliminar para eliminarlo (o eliminar funciones en una Mac).
 - Ctrl + z para deshacer y Ctrl + y o Ctrl + Shift + z para rehacer. ';
 $string['goodemptyprecheck'] = 'Aprobado';
-$string['gotcolhdr'] = 'Got';
+$string['gotcolhdr'] = 'Se obtuvo';
 $string['grader'] = 'Grader';
 $string['grading'] = 'Calificación';
 $string['gradingcontrols'] = 'Controles de calificación';
