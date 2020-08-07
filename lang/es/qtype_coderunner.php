@@ -304,10 +304,10 @@ Si el autor desea proporcionar una respuesta de muestra a una pregunta en varios
 deben escribirlo en el idioma predeterminado, si se especifica, o el
 primero de los idiomas permitidos de otra manera. ';
 $string['languageselectlabel'] = 'Idioma';
-$string['mark'] = 'Marca';
-$string['marcado'] = 'Marcar asignación';
-$string['markergroup'] = 'Marcado';
-$string['marcadogroup_help'] = 'Si \' Todo o nada \'está marcado, todos los casos de prueba deben cumplirse
+$string['mark'] = 'Calificación';
+$string['marking'] = 'Calificar asignación';
+$string['markinggroup'] = 'Calificación';
+$string['markinggroup_help'] = 'Si \'Todo o nada\'está marcado, todos los casos de prueba deben cumplirse
 para que la presentación gane alguna marca. De lo contrario, se obtiene la marca
 sumando las calificaciones de todos los casos de prueba que pasan
 y expresando esto como una fracción de la marca máxima posible.
