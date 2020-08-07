@@ -1,4 +1,4 @@
-define(['jquery', 'require', 'qtype_coderunner/blockly/browser'], function($, require, Blockly) {
+define(['jquery', 'require', 'core/url', 'qtype_coderunner/blockly/browser'], function($, require, url, Blockly) {
 /* 1. A constructor SomeUiName(textareaId, width, height, params) that
  *    builds an HTML component of the given width and height. textareaId is the
  *    ID of the textArea from which the UI element should obtain its initial
@@ -49,7 +49,10 @@ define(['jquery', 'require', 'qtype_coderunner/blockly/browser'], function($, re
                    Blockly.setLocale(msg);
                }
 
-               that.workspace = Blockly.inject(that.blocklyDiv, {"toolbox": toolbox});
+               that.workspace = Blockly.inject(that.blocklyDiv, {
+                    "toolbox": toolbox,
+                    "media": url.relativeUrl("question/type/coderunner/amd/src/blockly/media/", "", false)
+                  });
 
                // Load blockly state if exists
                if (textArea.value != "") {
