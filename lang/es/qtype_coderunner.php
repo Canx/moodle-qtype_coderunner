@@ -43,7 +43,7 @@ $string['answer'] = 'Ejemplo de respuesta';
 $string['answerprompt'] = 'Respuesta:';
 $string['answer_help'] = 'Aquí se puede ingresar una respuesta de muestra y el autor de la pregunta puede verificarla y, opcionalmente, mostrarla a los estudiantes durante la revisión. También es utilizado por el script de prueba masivo. La corrección de una respuesta no vacía se verifica al guardar a menos que \'Validar al guardar \' esté desmarcado ';
 $string['answerrequired'] = 'Proporcione una respuesta no vacía';
-$string['answertooshort'] = 'Respuesta demasiado corta. Debe tener al menos {$ a} caracteres. ';
+$string['answertooshort'] = 'Respuesta demasiado corta. Debe tener al menos {$a} caracteres. ';
 $string['atleastonetest'] = 'Debe proporcionar al menos un caso de prueba para esta pregunta.';
 $string['ace-language'] = 'As idioma';
 $string['advanced_customisation'] = 'Personalización avanzada';
@@ -66,9 +66,9 @@ $string['bad_dotdotdot'] = 'Mal uso de \' ... \'. Debe estar al final, después 
 $string['bademptyprecheck'] = 'La verificación previa falló con el siguiente resultado inesperado';
 $string['bad_empty_splitter'] = 'El divisor de prueba no puede estar vacío cuando se usa una plantilla de combinador';
 $string['badfilenamesregex'] = 'Expresión regular no válida';
-$string['badfiles'] = 'Nombre (s) de archivo no permitido: {$ a}';
-$string['badjsonfunc'] = 'Función incrustada JSON desconocida ({$ a-> func})';
-$string['badjson'] = 'Resultado JSON incorrecto del resultado del calificador combinador. La salida fue: {$ a-> salida} ';
+$string['badfiles'] = 'Nombre (s) de archivo no permitido: {$a}';
+$string['badjsonfunc'] = 'Función incrustada JSON desconocida ({$a-> func})';
+$string['badjson'] = 'Resultado JSON incorrecto del resultado del calificador combinador. La salida fue: {$a-> salida} ';
 $string['badmemlimit'] = 'El límite de memoria debe dejarse en blanco o debe ser un número entero no negativo';
 $string['bad_new_prototype_name'] = 'Nombre ilegal para nuevo prototipo: ya en uso';
 $string['badpenalties'] = 'El régimen de penalización debe ser una lista de números separados por comas en el rango [0, 100]';
@@ -77,15 +77,15 @@ $string['badrandomintarg'] = 'Argumento incorrecto para la función JSON @random
 $string['badrandompickarg'] = 'Argumento incorrecto para la función JSON @randompic';
 $string['badsandboxparams'] = '\' Otro \'campo (parámetros de sandbox) debe estar en blanco o un registro JSON válido';
 $string['badtemplateparams'] = 'Los parámetros de la plantilla deben estar en blanco o ser un registro JSON válido';
-$string['badtemplateparamsaftertwig'] = 'La combinación de parámetros de plantilla produjo un JSON no válido: <pre> {$ a} </pre>';
-$string['brokencombinator'] = 'Resultados esperados de la prueba {$ a-> numtests}, obtuvo {$ a-> numresults}. ¿Tal vez salida excesiva o error en cuestión? ';
-$string['brokentemplategrader'] = 'Resultado incorrecto del calificador: {$ a-> output}. La ejecución de su programa puede haber abortado (por ejemplo, se agotó el tiempo de espera o se excedió el límite de memoria).';
+$string['badtemplateparamsaftertwig'] = 'La combinación de parámetros de plantilla produjo un JSON no válido: <pre> {$a} </pre>';
+$string['brokencombinator'] = 'Resultados esperados de la prueba {$a-> numtests}, obtuvo {$a-> numresults}. ¿Tal vez salida excesiva o error en cuestión? ';
+$string['brokentemplategrader'] = 'Resultado incorrecto del calificador: {$a-> output}. La ejecución de su programa puede haber abortado (por ejemplo, se agotó el tiempo de espera o se excedió el límite de memoria).';
 $string['bulkquestiontester'] = 'El <a href=\"{$a-> link}\"> script de prueba masiva </a> prueba que las respuestas de muestra para todas las preguntas en el contexto actual están marcadas correctamente. Útil solo una vez que se han agregado algunas preguntas con ejemplos de respuestas; la instalación inicial no tiene ninguno. ';
 $string['bulktestallincontext'] = 'Probar todo';
 $string['bulktestcontinuefromhere'] = 'Ejecutar nuevamente o reanudar, comenzando desde aquí';
 $string['bulktestindextitle'] = 'Prueba masiva de CodeRunner';
 $string['bulktestrun'] = 'Ejecutar todas las pruebas de preguntas para todas las preguntas en el sistema (lento, solo administrador)';
-$string['bulktesttitle'] = 'Prueba de preguntas en {$ a}';
+$string['bulktesttitle'] = 'Prueba de preguntas en {$a}';
 $string['coderunnercategories'] = 'Categorías con preguntas de CodeRunner';
 $string['coderunnercontexts'] = 'Contextos con preguntas de CodeRunner';
 $string['coderunner'] = 'Código de programa';
@@ -153,7 +153,7 @@ $string['extra_help'] = 'Un campo de texto adicional a veces útil para uso de l
 $string['fail'] = 'Fail';
 $string['fail'] = 'fallas';
 $string['failurehidden'] = 'Su código falló una o más pruebas ocultas';
-$string['failurentests'] = 'Falló {$ a-> numerrors} prueba (s)';
+$string['failurentests'] = 'Falló {$a-> numerrors} prueba (s)';
 $string['failuretesting'] = 'Prueba fallida';
 $string['feedback'] = 'Comentarios';
 $string['feedback_quiz'] = 'Establecido por prueba';
@@ -164,7 +164,7 @@ $string['fileheader'] = 'Archivos de soporte';
 $string['filenamesexplain'] = 'Descripción';
 $string['filenamesregex'] = 'Expresión regular';
 $string['filloutoneanswer'] = 'Debe ingresar el código fuente que satisfaga la especificación. El código que ingrese se ejecutará para determinar su corrección y una calificación otorgada en consecuencia. ';
-$string['firstfailure'] = 'Primer caso de prueba fallido: {$ a}';
+$string['firstfailure'] = 'Primer caso de prueba fallido: {$a}';
 $string['forexample'] = 'Por ejemplo';
 $string['globalextra'] = 'Global extra';
 $string['globalextra_help'] = 'Un campo de texto para uso general de autores de plantillas, como el campo adicional de cada caso de prueba, pero global para todas las pruebas. Disponible para el autor de la plantilla como {{QUESTION.globalextra}}. ';
@@ -260,9 +260,9 @@ $string['ideone_user_desc'] = 'El nombre de inicio de sesión que se utilizará 
 $string['ideone_pass'] = 'Contraseña del servidor Ideone';
 $string['ideone_pass_desc'] = 'La contraseña a usar cuando se conecta al servidor Ideone en desuso (si el sandbox de ideone está habilitado)';
 $string['info_unavailable'] = 'La información del tipo de pregunta no está disponible para preguntas personalizadas.';
-$string['illegalformat'] = 'Formato ilegal ({$ a-> format}) en formatos de columna';
+$string['illegalformat'] = 'Formato ilegal ({$a-> format}) en formatos de columna';
 $string['inputcolhdr'] = 'Entrada';
-$string['insufficientattachments'] = 'No hay suficientes archivos adjuntos, se requiere {$ a}.';
+$string['insufficientattachments'] = 'No hay suficientes archivos adjuntos, se requiere {$a}.';
 $string['is_prototype'] = 'Usar como prototipo';
 $string['jobe_apikey'] = 'Clave API de Jobe';
 $string['jobe_apikey_desc'] = 'La clave API que se incluirá en todas las solicitudes REST al servidor Jobe (si es necesario). Max 40 caracteres. Déjelo en blanco para omitir la clave API de las solicitudes ';
@@ -331,14 +331,14 @@ $string['maxfilesize'] = 'Tamaño máximo de archivo permitido (bytes)';
 $string['maxfilesize_help'] = 'Seleccione el tamaño máximo de carga de archivos (bytes). Permitir cargas de archivos grandes con clases grandes puede afectar el rendimiento y el espacio en disco en los servidores Moodle y Jobe. ';
 $string['memorylimit'] = 'MemLimit (MB)';
 $string['missinganswers'] = 'respuestas faltantes';
-$string['missingorbadfraction'] = 'Fracción incorrecta o faltante en la salida de la salida de la clasificadora del combinador. La salida fue: {$ a-> salida} ';
+$string['missingorbadfraction'] = 'Fracción incorrecta o faltante en la salida de la salida de la clasificadora del combinador. La salida fue: {$a-> salida} ';
 $string['missingoutput'] = 'Debe proporcionar el resultado esperado de este caso de prueba.';
-$string['missingprototype'] = 'Esta pregunta se definió como del tipo \' {$ a-> crtype} \'pero el prototipo no existe, no es único o no está disponible en este contexto. Debe cancelar e intentar (re) instalar el prototipo.
+$string['missingprototype'] = 'Esta pregunta se definió como del tipo \' {$a-> crtype} \'pero el prototipo no existe, no es único o no está disponible en este contexto. Debe cancelar e intentar (re) instalar el prototipo.
 ¡Proceda a editar solo si sabe lo que está haciendo! ';
 $string['missingprototypes'] = 'Prototipos faltantes';
-$string['missingprototypewhenrunning'] = 'Pregunta rota (falta prototipo \' {$ a-> crtype} \'). No se puede ejecutar. ';
+$string['missingprototypewhenrunning'] = 'Pregunta rota (falta prototipo \' {$a-> crtype} \'). No se puede ejecutar. ';
 $string['multipledefaults'] = 'Como máximo se puede seleccionar un idioma como predeterminado';
-$string['multipleprototypes'] = 'Se encontraron múltiples prototipos para \' {$ a-> crtype} \'';
+$string['multipleprototypes'] = 'Se encontraron múltiples prototipos para \' {$a-> crtype} \'';
 $string['mustrequirefewer'] = 'No puede requerir más archivos adjuntos de los que permite';
 $string['nearequalitygrader'] = 'Coincidencia casi exacta';
 $string['nodetailsavailable'] = 'Seleccione un tipo de pregunta para ver ayuda detallada.';
@@ -398,7 +398,7 @@ $string['precheckingemptyset'] = 'Ejemplos de verificación previa, ¡pero no ha
 $string['privacy: metadata'] = 'El complemento de tipo de pregunta CodeRunner no almacena ningún dato personal.';
 $string['Proce_at_own_risk'] = '¡¿Editando un prototipo de pregunta incorporado ?! ¡Proceda bajo su propio riesgo! ';
 $string['prototypecontrols'] = 'Creación de prototipos';
-$string['prototypeusage'] = 'Uso del prototipo de la pregunta CodeRunner para el curso {$ a}';
+$string['prototypeusage'] = 'Uso del prototipo de la pregunta CodeRunner para el curso {$a}';
 $string['prototypeusageindex'] = 'Cursos disponibles';
 $string['prototypecontrols_help'] = 'Si \' Is prototype \'es verdadero, esta pregunta se convierte en un prototipo para otras preguntas.
 Después de guardar, el nombre del tipo de pregunta especificado aparecerá en la lista desplegable
@@ -811,7 +811,7 @@ $string['questiontypedetails'] = 'Detalles del tipo de pregunta';
 $string['questiontype_required'] = 'Debe seleccionar el tipo de pregunta';
 $string['qWrongBehaviour'] = 'Utilice el comportamiento adaptativo para todas las preguntas de CodeRunner, o puede haber grandes éxitos de rendimiento. Por ejemplo, todas las preguntas en una página deberán volverse a clasificar cuando se vuelva a mostrar la página. ';
 $string['regexgrader'] = 'Expresión regular';
-$string['replaceollarscount'] = 'Esta categoría contiene {$ a} preguntas de CodeRunner';
+$string['replaceollarscount'] = 'Esta categoría contiene {$a} preguntas de CodeRunner';
 $string['replaceexpectedwithgot'] = 'Haga clic en & lt; & lt; botón para reemplazar la salida esperada de este caso de prueba con la salida real. ';
 $string['resultcolumns'] = 'Columnas de resultados';
 $string['reset'] = 'Restablecer respuesta';
@@ -910,7 +910,7 @@ parámetro y también, opcionalmente, un parámetro \'jobeapikey \'. Por ejemplo
 El campo \'Parámetros \' está configurado en <code> {"jobeserver": "myspecialjobe.com"} </code>, la ejecución
 En su lugar, se enviará al servidor "myspecialjobe.com".
 ';
-$string['sandboxerror'] = 'Error del sandbox [{$ a-> sandbox}]: {$ a-> message}';
+$string['sandboxerror'] = 'Error del sandbox [{$a-> sandbox}]: {$a-> message}';
 $string['sandboxparams'] = 'Parámetros';
 $string['seethisquestioninthequestionbank'] = 'Ver esta pregunta en el banco de preguntas';
 $string['SHOW'] = 'Mostrar';
@@ -1032,7 +1032,7 @@ Los estudiantes ven diferentes variantes aleatorias de la pregunta. Ver la docum
 para detalles.';
 $string['testalltitle'] = 'Probar todas las preguntas en este contexto';
 $string['testallincategory'] = 'Probar todas las preguntas en esta categoría';
-$string['testcase'] = 'Caso de prueba {$ a}';
+$string['testcase'] = 'Caso de prueba {$a}';
 $string['testcasecontrols'] = 'Propiedades de prueba:';
 $string['testcasecontrols_help'] = 'Si \' Usar como ejemplo \'está marcado, esta prueba se incluirá automáticamente en el
 pregunta \'s \' Por ejemplo: \'tabla de resultados.
@@ -1051,7 +1051,7 @@ guardado: los casos de prueba están ordenados por este campo. ';
 $string['testcases'] = 'Casos de prueba';
 $string['testcode'] = 'Código de prueba';
 $string['testcolhdr'] = 'Prueba';
-$string['testingquestion'] = 'Pregunta de prueba {$ a}';
+$string['testingquestion'] = 'Pregunta de prueba {$a}';
 $string['testsplitterre'] = 'Divisor de prueba (expresiones regulares)';
 $string['testcode_help'] = 'El código para la prueba, visto por la plantilla como {{TEST.testcode}}';
 $string['testtype'] = 'Precheck test type';
@@ -1063,8 +1063,8 @@ $string['testtype_normal'] = 'Verificar solo';
 $string['testtype_precheck'] = 'Precheck only';
 $string['testtype_both'] = 'Ambos';
 $string['tooshort'] = 'La respuesta es demasiado corta para ser significativa y ha sido ignorada sin penalización';
-$string['twigall'] = 'Ramita todo';
-$string['twigcontrols'] = 'Controles de ramita';
+$string['twigall'] = 'Twig all';
+$string['twigcontrols'] = 'Controles de Twig';
 $string['twigcontrols_help'] = 'Los parámetros de plantilla normalmente se mencionan durante la expansión de Twig en el formulario
 {{QUESTION.parameters.someparam}} Sin embargo, si los parámetros de la plantilla de elevación
 la casilla de verificación está marcada, los parámetros se izan en el espacio de nombre global de Twig
@@ -1075,8 +1075,8 @@ aplicado a los parámetros de la plantilla también y, si Twig All está marcado
 texto de pregunta, respuesta de muestra, precarga de respuesta y todos los campos de casos de prueba, utilizando
 los parámetros de plantilla expandidos Twig como un entorno. Por lo general
 necesita activar TwigAll si usa la aleatorización dentro de los parámetros de la plantilla ';
-$string['twigerror'] = 'Error de ramita {$ a}';
-$string['twigerrorintest'] = 'Error de ramita al procesar esta prueba {$ a}';
+$string['twigerror'] = 'Error de Twig {$a}';
+$string['twigerrorintest'] = 'Error de Twig al procesar esta prueba {$a}';
 $string['type_header'] = 'Tipo de pregunta de CodeRunner';
 $string['typename'] = 'Tipo de pregunta';
 $string['typerequired'] = 'Seleccione el tipo de pregunta (idioma, formato, etc.)';
@@ -1086,10 +1086,10 @@ la plantilla del autor de la pregunta.
  
 El menú desplegable Respuesta del alumno muestra una lista
 de complementos disponibles. Para las preguntas de codificación, generalmente se usa el editor Ace.
-Se puede usar un valor de \'Ninguno \' para proporcionar solo un cuadro de texto sin formato.
+Se puede usar un valor de \'Ninguno\' para proporcionar solo un cuadro de texto sin formato.
  
 El valor
-\'Graph \' proporciona al usuario una interfaz de usuario de dibujo gráfico simple para su uso
+\'Graph\' proporciona al usuario una interfaz de usuario de dibujo gráfico simple para su uso
 con preguntas que le piden al alumno que dibuje un gráfico con alguna especificación; tal
 las preguntas generalmente tendrán un solo caso de prueba, calificado con una plantilla
 que analiza el serializado
@@ -1138,10 +1138,10 @@ $string['ui_fallback'] = 'Volviendo al área de texto sin formato.';
 $string['unauthorisedbulktest'] = 'No tiene acceso adecuado a ninguna pregunta de CodeRunner';
 $string['unauthoriseddbaccess'] = 'No tiene autorización para usar este script';
 $string['unknownerror'] = 'Se produjo un error inesperado. La caja de arena puede estar abajo. Inténtalo de nuevo en breve. ';
-$string['unknowncombinatorgraderfield'] = 'Nombre de campo desconocido ({$ a-> fieldname}) en la salida del calificador combinador';
+$string['unknowncombinatorgraderfield'] = 'Nombre de campo desconocido ({$a-> fieldname}) en la salida del calificador combinador';
 $string['unserializefailed'] = 'Los resultados de la prueba almacenados no se pudieron deserializar. ¿Quizás intente regrading? ';
 $string['useasexample'] = 'Usar como ejemplo';
-$string['useace'] = 'La plantilla usa as';
+$string['useace'] = 'La plantilla usa el editor Ace';
 $string['validateonsave'] = 'Validar al guardar';
-$string['wrongnumberofformats'] = 'Número incorrecto de formatos de columna de resultados de prueba. Se esperaba {$ a-> esperado}, consiguió {$ a-> got} ';
+$string['wrongnumberofformats'] = 'Número incorrecto de formatos de columna de resultados de prueba. Se esperaba {$a-> esperado}, consiguió {$a-> got} ';
 $string['xmlcoderunnerformaterror'] = 'Error de formato XML en la pregunta del codificador';
