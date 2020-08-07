@@ -304,19 +304,14 @@ Si el autor desea proporcionar una respuesta de muestra a una pregunta en varios
 deben escribirlo en el idioma predeterminado, si se especifica, o el
 primero de los idiomas permitidos de otra manera. ';
 $string['languageselectlabel'] = 'Idioma';
-$string['mark'] = 'Calificación';
+$string['mark'] = 'Puntos';
 $string['marking'] = 'Calificar asignación';
 $string['markinggroup'] = 'Calificación';
-$string['markinggroup_help'] = 'Si \'Todo o nada\'está marcado, todos los casos de prueba deben cumplirse
-para que la presentación gane alguna marca. De lo contrario, se obtiene la marca
-sumando las calificaciones de todos los casos de prueba que pasan
-y expresando esto como una fracción de la marca máxima posible.
-Las marcas por caso de prueba solo se pueden especificar si el todo o nada
-la casilla de verificación no está marcada. Si usa un calificador de plantilla que otorga
-las marcas de parte para probar casos, \'Todo o nada \' generalmente deben estar desmarcadas.
+$string['markinggroup_help'] = 'Si \'Todo o nada\' está seleccionado, todos los casos de prueba deben cumplirse para que la pregunta  obtenga alguna calificación. De lo contrario, se obtiene la calificación sumando las puntuaciones de todos los casos de prueba que pasan y expresando esto como una fracción de la puntuación máxima posible.
+Las puntuaciones por caso de prueba solo se pueden especificar si la casilla de verificación \'Todo o nada\' no está seleccionada. Si usa una plantilla de calificación que otorga puntuaciones parciales a los casos de prueba \'Todo o nada\' no debe seleccionarse.
  
-El régimen de penalización obligatoria es una lista de penalizaciones separadas por comas (cada una un porcentaje)
-aplicar a presentaciones sucesivas. Estos son absolutos, no acumulativos. Como un
+El régimen de penalización obligatorio es una lista de penalizaciones separadas por comas (cada una con un porcentaje)
+que se aplican a las entregas sucesivamente. Son penalizaciones absolutas, no acumulativas. Como un
 caso especial, la última penalización puede ser \'... \' para significar "extender la anterior
 dos penalizaciones como una progresión aritmética de hasta 100 ". Por ejemplo,
 <code> 0,5,10,30, ... </code> es equivalente a <code> 0,5,10,30,50,70,90,100 </code>.
@@ -326,7 +321,7 @@ Los espacios se pueden usar en lugar de comas como separador.
 El administrador del sistema puede establecer el régimen de penalización predeterminado en todo el sitio mediante
 Administración del sitio> Complementos> Tipos de preguntas> CodeRunner.
  
-Establezca el régimen de penalización en \'0 \' para cero penalizaciones en todas las presentaciones. ';
+Establezca el régimen de penalización en \'0 \' para cero penalizaciones en todos los envíos. ';
 $string['maxfilesize'] = 'Tamaño máximo de archivo permitido (bytes)';
 $string['maxfilesize_help'] = 'Seleccione el tamaño máximo de carga de archivos (bytes). Permitir cargas de archivos grandes con clases grandes puede afectar el rendimiento y el espacio en disco en los servidores Moodle y Jobe. ';
 $string['memorylimit'] = 'MemLimit (MB)';
