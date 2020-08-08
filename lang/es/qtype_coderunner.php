@@ -22,17 +22,17 @@
  */
  
 $string['aborted'] = 'La prueba fue abortada debido a un error.';
-$string['ace_ui_notready'] = 'El editor Ace no está listo. ¿Quizás recargar la página? ';
-$string['creatingcoderunner'] = 'Agregar una nueva pregunta de CodeRunner';
+$string['ace_ui_notready'] = 'El editor Ace no está listo. Prueba a recargar la página!';
+$string['addingcoderunner'] = 'Agregar una nueva pregunta de CodeRunner';
 $string['ajax_error'] = '*** ERROR AJAX. ¡NO GUARDE ESTO! *** ';
 $string['allok'] = '¡Pasó todas las pruebas! ';
 $string['allornone'] = 'El código de prueba se debe proporcionar para todos los casos de prueba o para ninguno.';
 $string['allornothing'] = 'Calificación de todo o nada';
-$string['allornothing_help'] = 'Si \' Todo-o-nada \'está marcado, todos los casos de prueba deben cumplirse para que el envío obtenga alguna calificación. De lo contrario, la calificación se obtiene sumando las calificaciones de todos los casos de prueba que pasan y expresando esto como una fracción de la calificación máxima posible.
+$string['allornothing_help'] = 'Si \'Todo-o-nada\' está seleccionado, todos los casos de prueba deben cumplirse para que el envío obtenga alguna calificación. De lo contrario, la calificación se obtiene sumando las calificaciones de todos los casos de prueba que pasan y expresando esto como una fracción de la calificación máxima posible.
  
-Las marcas por caso de prueba solo se pueden especificar si la casilla de verificación todo o nada está desmarcada.
+Las puntuaciones por caso de prueba solo se pueden especificar si la casilla de verificación todo o nada no está seleccionada.
  
-Si utiliza un calificador de plantillas que otorga marcas de parte a los casos de prueba, \'Todo o nada \' generalmente no debe estar marcado. ';
+Si utiliza un calificador de plantillas que otorga puntuaciones parciales a los casos de prueba, \'Todo o nada\' generalmente no debe estar seleccionado. ';
 $string['allowattachments'] = 'Permitir adjuntos';
 $string['allowattachments_help'] = 'Si se permite a los estudiantes agregar archivos adjuntos a sus envíos y, de ser así, cuántos. Los archivos adjuntos se copian en el directorio de trabajo de tiempo de ejecución y se proporciona una lista separada por comas de los nombres de los archivos adjuntos a la plantilla en la variable Twig {{ATTACHMENTS}}. Advertencia: permitir archivos adjuntos podría tener implicaciones de rendimiento o espacio en disco para los servidores Moodle y Jobe con clases grandes y / o archivos adjuntos grandes. El servidor Moodle y los servidores Jobe anteriores a febrero de 2019 almacenan todos los archivos adjuntos indefinidamente. ';
 $string['allowedfilenames'] = 'Nombres de archivo permitidos';
