@@ -444,7 +444,7 @@ $string['prototype_error'] = '*** PROTOTYPE LOAD FAILURE. DON\'T SAVE THIS! ***'
 $string['prototype_load_failure'] = 'Error loading prototype: ';
 $string['prototypeQ'] = 'Is prototype?';
 
-$string['qtype_blockly'] = '<p>A question type that integrates a Google Blockly library. Python code is generated in the browser.</p>';
+$string['qtype_blockly'] = '<p>A question type that integrates the <a href="https://developers.google.com/blockly">Google Blockly library</a>.</p><p>Python generator is used in Blockly, so question test cases should be written in Python.</p><p> It\'s possible to localize Blockly using templateParams with { "locale": "*lang*"}. Where *lang* is the name without extension of any .js file found in "question/type/coderunner/amd/src/blockly/msg/".</p><p>It\'s also possible customize the toolbox adding in templateParams { "toolbox": "*xml*" }. The toolbox can be created with <a href="https://blockly-demo.appspot.com/static/demos/blockfactory/index.html">Blockly developer tools</a>. It\'s required that *xml* is an escaped XML for correct JSON embedding (search for "escape json tools" in Google)</p>';
 $string['qtype_c_function'] = '<p>A question type for C write-a-function questions.
 The student answer is expected to be a complete C function, but it can optionally
 be preceded by other self-contained C code such as preprocessor directives and
