@@ -35,11 +35,12 @@ cp $TMP_DIR/media/* $CURR/media/
 sed -i 's/javascript/python/g' $CURR/browser.js
 
 # remove .js extension in define()
-sed -i 's/\.js//g' $CURR/blockly.js
-sed -i 's/\.js//g' $CURR/blocks.js
-sed -i 's/\.js//g' $CURR/python.js
-sed -i 's/\.js//g' $CURR/python_compressed.js
-sed -i 's/\.js//g' $CURR/blocks_compressed.js
+# BUG: this also replaces in places not wanted!!!!!
+sed -i "s/\.js'/'/g" $CURR/blockly.js
+sed -i "s/\.js'/'/g" $CURR/blocks.js
+sed -i "s/\.js'/'/g" $CURR/python.js
+sed -i "s/\.js'/'/g" $CURR/python_compressed.js
+sed -i "s/\.js'/'/g" $CURR/blocks_compressed.js
 
 # delete tmp file
 rm -rf $CURR/tmp

@@ -4,7 +4,7 @@
 ;(function(root, factory) {
   if (typeof define === 'function' && define.amd) { // AMD
     define(['./blockly_compressed'], factory);
-  } else if (typeof exports === 'object') { // Node
+  } else if (typeof exports === 'object') { // Node.js
     module.exports = factory(require('./blockly_compressed'));
   } else { // Browser
     root.Blockly.Python = factory(root.Blockly);
@@ -95,4 +95,4 @@ return Blockly.Python;
 }));
 
 
-//# sourceMappingURL=python_compressed.map
+//# sourceMappingURL=python_compressed.js.map

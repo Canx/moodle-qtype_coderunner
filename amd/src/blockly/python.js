@@ -2,7 +2,7 @@
 ;(function(root, factory) {
   if (typeof define === 'function' && define.amd) { // AMD
     define(['./core-browser', './python_compressed'], factory);
-  } else if (typeof exports === 'object') { // Node
+  } else if (typeof exports === 'object') { // Node.js
     module.exports = factory(require('./core-browser'), require('./python_compressed'));
   } else { // Browser
     root.BlocklyPython = factory(root.Blockly, root.BlocklyPython);
