@@ -1,8 +1,8 @@
 {
   "_from": "blockly",
-  "_id": "blockly@3.20200625.2",
+  "_id": "blockly@4.20201217.0",
   "_inBundle": false,
-  "_integrity": "sha512-+0aUynP4kAFjg+m9uSyctWB+KwT3/BDmqy4Fm7vwWq7cuMtgIsqqA8VGb6INVpFx9WZUXSZ5enFAco6CM85bpA==",
+  "_integrity": "sha512-kQjP0TydnMIkH8pbJ0qpC1bhqATijCwFMi1UFP3SjULWTR44JpHC4g8c2K+ATUexg9p5/nioslQDNL8dBi3nvw==",
   "_location": "/blockly",
   "_phantomChildren": {},
   "_requested": {
@@ -19,10 +19,10 @@
     "#USER",
     "/"
   ],
-  "_resolved": "https://registry.npmjs.org/blockly/-/blockly-3.20200625.2.tgz",
-  "_shasum": "266b6c3078aad460afc7e831e6e8f7616073d314",
+  "_resolved": "https://registry.npmjs.org/blockly/-/blockly-4.20201217.0.tgz",
+  "_shasum": "2031f42ff84d34a0fb35b1e69b0064466a1e0346",
   "_spec": "blockly",
-  "_where": "/var/www/moodle/question/type/coderunner/amd/src/blockly/tmp",
+  "_where": "/home/ruben/Desarrollo/moodle-qtype_coderunner/amd/src/blockly/tmp",
   "author": {
     "name": "Neil Fraser"
   },
@@ -36,53 +36,40 @@
   },
   "bundleDependencies": false,
   "dependencies": {
-    "jsdom": "^15.2.1"
+    "jsdom": "15.2.1"
   },
   "deprecated": false,
   "description": "Blockly is a library for building visual programming editors.",
   "devDependencies": {
+    "@blockly/block-test": "^1.0.0",
+    "@blockly/dev-tools": "^2.0.1",
+    "@blockly/theme-modern": "^2.1.1",
+    "babel-eslint": "^10.1.0",
     "chai": "^4.2.0",
-    "concurrently": "^4.1.2",
-    "eslint": "^5.13.0",
+    "concurrently": "^5.3.0",
+    "eslint": "^7.6.0",
     "eslint-plugin-es5": "^1.5.0",
-    "google-closure-compiler": "^20200101.0.0",
-    "google-closure-deps": "^20200101.0.0",
+    "google-closure-compiler": "^20201102.0.1",
+    "google-closure-deps": "^20201102.0.1",
     "gulp": "^4.0.2",
     "gulp-concat": "^2.6.1",
     "gulp-insert": "^0.5.0",
-    "gulp-rename": "^1.4.0",
+    "gulp-rename": "^2.0.0",
     "gulp-replace": "^1.0.0",
     "gulp-series": "^1.0.2",
-    "gulp-shell": "^0.7.1",
-    "gulp-sourcemaps": "^2.6.5",
+    "gulp-shell": "^0.8.0",
+    "gulp-sourcemaps": "^3.0.0",
     "gulp-umd": "^2.0.0",
-    "js-green-licenses": "^1.1.0",
-    "jshint": "^2.11.0",
-    "mocha": "^6.2.3",
-    "pixelmatch": "^4.0.2",
-    "pngjs": "^3.4.0",
-    "rimraf": "^2.6.3",
+    "js-green-licenses": "^2.0.1",
+    "mocha": "^8.1.1",
+    "rimraf": "^3.0.2",
     "selenium-standalone": "^6.17.0",
-    "through2": "^3.0.1",
+    "through2": "^4.0.2",
     "typescript-closure-tools": "^0.0.7",
-    "webdriverio": "^5.22.4",
-    "yargs": "^14.2.3"
+    "webdriverio": "^6.5.2",
+    "yargs": "^16.0.3"
   },
   "homepage": "https://developers.google.com/blockly/",
-  "jshintConfig": {
-    "globalstrict": true,
-    "predef": [
-      "Blockly",
-      "goog",
-      "window",
-      "document",
-      "soy",
-      "XMLHttpRequest"
-    ],
-    "sub": true,
-    "undef": true,
-    "unused": true
-  },
   "keywords": [
     "blockly"
   ],
@@ -96,5 +83,5 @@
   "types": "./index.d.ts",
   "umd": "./blockly.min.js",
   "unpkg": "./blockly.min.js",
-  "version": "3.20200625.2"
+  "version": "4.20201217.0"
 }
