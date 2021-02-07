@@ -92,7 +92,7 @@ define(['jquery', 'require', 'core/url', 'qtype_coderunner/blockly/browser'], fu
 
             // Append code node to workspaceState
             var code = Blockly.Python.workspaceToCode(this.workspace);
-            var xmlCode = Blockly.Xml.textToDom("<code>" + code + "</code>");
+            var xmlCode = Blockly.Xml.textToDom("<code><![CDATA[" + code + "]]></code>");
             workspaceState.appendChild(xmlCode);
             this.textArea.value = (new XMLSerializer()).serializeToString(workspaceState);
         };
